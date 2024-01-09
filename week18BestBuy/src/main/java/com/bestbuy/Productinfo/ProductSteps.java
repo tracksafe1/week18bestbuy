@@ -9,6 +9,8 @@ import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 
+import static net.serenitybdd.rest.RestRequests.when;
+
 public class ProductSteps {
     static int id;
 
@@ -38,8 +40,7 @@ public class ProductSteps {
     @Step("Getting the product information with id: {0}")
     public ValidatableResponse getProductInfoById(int id) {
         return SerenityRest.given().log().all()
-                .header("Connection", "keep-alive")
-                .header("Accept", "application/json")
+
                 .pathParam("id", id)
                 .when()
                 .get(EndPoints.GET_SINGLE_PRODUCT_BY_ID)
@@ -49,8 +50,7 @@ public class ProductSteps {
     @Step("Getting the product information with id: {0}")
     public ValidatableResponse getAllProductInfo() {
         return SerenityRest.given().log().all()
-                .header("Connection", "keep-alive")
-                .header("Accept", "application/json")
+
                 .when()
                 .get(EndPoints.GET_ALL_PRODUCT)
                 .then().log().all();
@@ -72,9 +72,7 @@ public class ProductSteps {
         productPojo.setImage(image);
 
         return SerenityRest.given().log().all()
-                .header("Connection", "keep-alive")
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
+
                 .pathParam("id", id)
                 .body(productPojo)
                 .when()
@@ -85,8 +83,7 @@ public class ProductSteps {
     @Step("Deleting product information with id: {0}")
     public ValidatableResponse deleteProduct(int id) {
         return SerenityRest.given().log().all()
-                .header("Accept", "application/json")
-                .header("Content-Type", "application/json")
+
                 .pathParam("id", id)
                 .when()
                 .delete(EndPoints.DELETE_PRODUCT_BY_ID)

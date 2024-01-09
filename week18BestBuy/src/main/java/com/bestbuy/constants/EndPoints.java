@@ -9,4 +9,11 @@ public class EndPoints {
     public static final String GET_SINGLE_PRODUCT_BY_ID = "products/{id}";
     public static final String UPDATE_PRODUCT_BY_ID = "products/{id}";
     public static final String DELETE_PRODUCT_BY_ID = "products/{id}";
+
+
+    public static final String GET_ALL_STORES= "/products";
+    public static final String CREATE_STORE = "/products";
+    public static final String GET_STORE_BY_ID = "products/{id}";
+    public static final String UPDATE_STORE_BY_ID = "products/{id}";
+    public static final String DELETE_STORE_BY_ID = "products/{id}";
 }
