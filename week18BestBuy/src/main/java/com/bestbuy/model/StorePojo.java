@@ -1,108 +1,112 @@
 package com.bestbuy.model;
 
 public class StorePojo {
-    private String name;
-    private String type;
-    private String address;
-    private String address2;
-    private String city;
-    private String state;
-    private String zip;
-    private Integer lat;
-    private Integer lng;
-    private String hours;
-    private Services services;
-    public class Services {
+    public class Example {
+
+        private String name;
+        private String type;
+        private String address;
+        private String address2;
+        private String city;
+        private String state;
+        private String zip;
+        private Integer lat;
+        private Integer lng;
+        private String hours;
+        private Services services;
+        public class Services {
+            private Services services;
+            public Services getServices() {
+                return services;
+            }
+
+            public void setServices(Services services) {
+                this.services = services;
+            }
+
+        }
 
 
-    }
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getType() {
-        return type;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+        public String getType() {
+            return type;
+        }
 
-    public String getAddress() {
-        return address;
-    }
+        public void setType(String type) {
+            this.type = type;
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+        public String getAddress() {
+            return address;
+        }
 
-    public String getAddress2() {
-        return address2;
-    }
+        public void setAddress(String address) {
+            this.address = address;
+        }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
+        public String getAddress2() {
+            return address2;
+        }
 
-    public String getCity() {
-        return city;
-    }
+        public void setAddress2(String address2) {
+            this.address2 = address2;
+        }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+        public String getCity() {
+            return city;
+        }
 
-    public String getState() {
-        return state;
-    }
+        public void setCity(String city) {
+            this.city = city;
+        }
 
-    public void setState(String state) {
-        this.state = state;
-    }
+        public String getState() {
+            return state;
+        }
 
-    public String getZip() {
-        return zip;
-    }
+        public void setState(String state) {
+            this.state = state;
+        }
 
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
+        public String getZip() {
+            return zip;
+        }
 
-    public Integer getLat() {
-        return lat;
-    }
+        public void setZip(String zip) {
+            this.zip = zip;
+        }
 
-    public void setLat(Integer lat) {
-        this.lat = lat;
-    }
+        public Integer getLat() {
+            return lat;
+        }
 
-    public Integer getLng() {
-        return lng;
-    }
+        public void setLat(Integer lat) {
+            this.lat = lat;
+        }
 
-    public void setLng(Integer lng) {
-        this.lng = lng;
-    }
+        public Integer getLng() {
+            return lng;
+        }
 
-    public String getHours() {
-        return hours;
-    }
+        public void setLng(Integer lng) {
+            this.lng = lng;
+        }
 
-    public void setHours(String hours) {
-        this.hours = hours;
-    }
+        public String getHours() {
+            return hours;
+        }
 
-    public Services getServices() {
-        return services;
-    }
+        public void setHours(String hours) {
+            this.hours = hours;
+        }
 
-    public void setServices(Services services) {
-        this.services = services;
-    }
 
-}
-
+}}

@@ -9,8 +9,6 @@ import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 
-import static net.serenitybdd.rest.RestRequests.when;
-
 public class ProductSteps {
     static int id;
 
@@ -28,23 +26,24 @@ public class ProductSteps {
         productPojo.setUrl(url);
         productPojo.setImage(image);
 
+
         return SerenityRest.given().log().all()
+
                 .contentType(ContentType.JSON)
                 .body(productPojo)
                 .when()
                 .post()
-                .then().log().all().statusCode(201);
-
+                .then().log().all();
     }
-
     @Step("Getting the product information with id: {0}")
     public ValidatableResponse getProductInfoById(int id) {
         return SerenityRest.given().log().all()
-
-                .pathParam("id", id)
+              //  .header("Connection","keep-alive")
+            //    .header("Accept", "application/json")
+                .pathParam("id",id)
                 .when()
                 .get(EndPoints.GET_SINGLE_PRODUCT_BY_ID)
-                .then().log().all().statusCode(200);
+                .then().log().all();
     }
 
     @Step("Getting the product information with id: {0}")
@@ -52,7 +51,7 @@ public class ProductSteps {
         return SerenityRest.given().log().all()
 
                 .when()
-                .get(EndPoints.GET_ALL_PRODUCT)
+                .get()
                 .then().log().all();
     }
 
@@ -73,6 +72,7 @@ public class ProductSteps {
 
         return SerenityRest.given().log().all()
 
+                .contentType(ContentType.JSON)
                 .pathParam("id", id)
                 .body(productPojo)
                 .when()

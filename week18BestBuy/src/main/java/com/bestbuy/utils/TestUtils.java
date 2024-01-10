@@ -12,9 +12,15 @@ public class TestUtils {
 		return Integer.toString(randomInt);
 	}
 
+
 	public static String getRandomText() {
 		String rndText;
 		RandomString rnd = new RandomString(10);
 		return rndText = rnd.nextString();
+	}
+	public static Integer getRandomNumber(){
+		Random random = new Random();
+		int randomInt = random.nextInt(100000);
+		return Integer.valueOf(randomInt);
 	}
 }

@@ -31,12 +31,13 @@ name= TestUtils.getRandomValue()+_name;
 response=productSteps.createProduct(name,type,price,shipping,upc,description,manufacturer,model,url,image);
 
         id = response.extract().path("id");
-        System.out.println(id);
+
     }
 
     @And("^I verify that the product with name \"([^\"]*)\" is created$")
     public void iVerifyThatTheProductWithNameIsCreated(String _name) {
-           response = productSteps.getProductInfoById(id);
+        response.statusCode(201);
+        response = productSteps.getProductInfoById(id);
         HashMap<String,Object> value = response.extract().path("");
         id = (int) value.get("id");
         Assert.assertThat(value,hasValue(name));
