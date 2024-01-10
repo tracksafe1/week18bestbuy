@@ -17,7 +17,9 @@ public class TestBaseBestBuyApi {
         propertyReader = PropertyReader.getInstance();
         RestAssured.baseURI = propertyReader.getProperty("bestBuy.BaseUrl");
         RestAssured.port = Integer.parseInt(propertyReader.getProperty("bestBuy.Port"));
-        RestAssured.basePath = Path.PRODUCT;
+      // RestAssured.basePath = Path.PRODUCT;
+        RestAssured.basePath = Path.STORE;
+
     }
 
 }

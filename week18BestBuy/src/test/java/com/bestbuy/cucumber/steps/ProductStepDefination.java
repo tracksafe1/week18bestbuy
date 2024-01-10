@@ -1,8 +1,8 @@
 package com.bestbuy.cucumber.steps;
 
 import com.bestbuy.Productinfo.ProductSteps;
+import com.bestbuy.Productinfo.StoreSteps;
 import com.bestbuy.utils.TestUtils;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 import static org.hamcrest.collection.IsMapContaining.hasValue;
 
-public class ProductStep {
+public class ProductStepDefination {
     static int id;
     static  String name=null;
     static ValidatableResponse response;
@@ -59,13 +59,12 @@ response=productSteps.createProduct(name,type,price,shipping,upc,description,man
     }
 
     @And("^I delete the product that created with name \"([^\"]*)\"$")
-    public void iDeleteTheProductThatCreatedWithName(String _name){
-        productSteps.deleteProduct(id);
+    public void iDeleteTheStoreThatCreatedWithName(String _name) {
+        StoreSteps.deleteStore(id);
     }
-
     @Then("^The product deleted successfully from the application$")
-    public void theProductDeletedSuccessfullyFromTheApplication() {
+    public void theStoreDeletedSuccessfullyFromTheApplication() {
         response.statusCode(200);
-        productSteps.getProductInfoById(id).statusCode(404);
+        StoreSteps.getStoreInfoById(id).statusCode(404);
     }
 }

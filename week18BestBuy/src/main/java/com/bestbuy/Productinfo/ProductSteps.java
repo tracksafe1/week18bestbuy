@@ -38,15 +38,14 @@ public class ProductSteps {
     @Step("Getting the product information with id: {0}")
     public ValidatableResponse getProductInfoById(int id) {
         return SerenityRest.given().log().all()
-              //  .header("Connection","keep-alive")
-            //    .header("Accept", "application/json")
+
                 .pathParam("id",id)
                 .when()
                 .get(EndPoints.GET_SINGLE_PRODUCT_BY_ID)
                 .then().log().all();
     }
 
-    @Step("Getting the product information with id: {0}")
+    @Step("Getting the product information  id: {0}")
     public ValidatableResponse getAllProductInfo() {
         return SerenityRest.given().log().all()
 

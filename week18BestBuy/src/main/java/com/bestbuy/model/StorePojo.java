@@ -1,7 +1,7 @@
 package com.bestbuy.model;
 
 public class StorePojo {
-    public class Example {
+
 
         private String name;
         private String type;
@@ -14,7 +14,7 @@ public class StorePojo {
         private Integer lng;
         private String hours;
         private Services services;
-        public class Services {
+        public static class Services {
             private Services services;
             public Services getServices() {
                 return services;
@@ -109,4 +109,5 @@ public class StorePojo {
         }
 
 
-}}
+
+}

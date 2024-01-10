@@ -108,7 +108,7 @@ public class CRUDwithPojo extends TestBaseBestBuyApi {
             String p2="'}.get(0)";
             HashMap<String,Object>  ProductMap =SerenityRest.given().log().all()
                     .when()
-                    .get(EndPoints.UPDATE_STORE_BY_ID)
+                    .get(EndPoints.UPDATE_PRODUCT_BY_ID)
                     .then()
                     .statusCode(200)
                     .extract()
