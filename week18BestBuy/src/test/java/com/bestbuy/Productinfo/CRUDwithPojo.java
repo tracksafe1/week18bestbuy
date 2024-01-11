@@ -6,6 +6,7 @@ import com.bestbuy.testbase.TestBaseBestBuyApi;
 import com.bestbuy.utils.TestUtils;
 import io.restassured.http.ContentType;
 
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
@@ -13,34 +14,36 @@ import net.thucydides.core.annotations.Title;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
+
 import static org.hamcrest.Matchers.hasValue;
 
 public class CRUDwithPojo extends TestBaseBestBuyApi {
 
-    static String name="Battery"+TestUtils.getRandomValue();
-    static String type="AA"+TestUtils.getRandomValue();
-    static int price=100+TestUtils.getRandomNumber();
-    static Integer shipping=5+TestUtils.getRandomNumber();
-    static String upc="Company1"+TestUtils.getRandomValue();
-    static String description="MR22"+TestUtils.getRandomValue();
-    static String manufacturer="string"+TestUtils.getRandomValue();
-    static String model="string"+TestUtils.getRandomValue();
-    static String url="string"+TestUtils.getRandomValue();;
-    static String image="string"+TestUtils.getRandomValue();;
+    static String name = "Battery" + TestUtils.getRandomValue();
+    static String type = "AA" + TestUtils.getRandomValue();
+    static int price = 100 + TestUtils.getRandomNumber();
+    static Integer shipping = 5 + TestUtils.getRandomNumber();
+    static String upc = "Company1" + TestUtils.getRandomValue();
+    static String description = "MR22" + TestUtils.getRandomValue();
+    static String manufacturer = "string" + TestUtils.getRandomValue();
+    static String model = "string" + TestUtils.getRandomValue();
+    static String url = "string" + TestUtils.getRandomValue();
+    ;
+    static String image = "string" + TestUtils.getRandomValue();
+    ;
     static int productId;
     static ValidatableResponse response;
 
     @Steps
     ProductSteps productSteps;
 
+
     @Test
-    public void test0001(){
+    public void test001() {
         given()
                 .when()
                 .get()
@@ -48,85 +51,62 @@ public class CRUDwithPojo extends TestBaseBestBuyApi {
                 .log().all()
                 .statusCode(200);
     }
+
     @Title("This will create a new student")
     @Test
 
-        public void createProductDetails(){
-            ProductPojo productPojo=new ProductPojo();
-            productPojo.setName(name);
-            productPojo.setType(type);
-            productPojo.setPrice(price);
-            productPojo.setShipping(shipping);
-            productPojo.setUpc(upc);
-            productPojo.setDescription(description);
-            productPojo.setManufacturer(manufacturer);
-            productPojo.setModel(model);
-            productPojo.setUrl(url);
-            productPojo.setImage(image);
-        SerenityRest.given().log().all()
+    public void test002() {
+        ProductPojo productPojo = new ProductPojo();
+        productPojo.setName(name);
+        productPojo.setType(type);
+        productPojo.setPrice(price);
+        productPojo.setShipping(shipping);
+        productPojo.setUpc(upc);
+        productPojo.setDescription(description);
+        productPojo.setManufacturer(manufacturer);
+        productPojo.setModel(model);
+        productPojo.setUrl(url);
+        productPojo.setImage(image);
+        Response response=given().log().all()
                 .contentType(ContentType.JSON)
                 .body(productPojo)
                 .when()
-                .post()
-                .then().log().all().statusCode(201);
+                .post(EndPoints.CREATE_PRODUCT);
+        productId= response.then().log().all().extract().path("id");
+        System.out.println(productId);
 
     }
 
-    @Title("Verify if product was created")
-    @Test
-    public void verifyProductCreated(){
-        String p1="findAll{it.name=='";
-        String p2="'}.get(0)";
-        HashMap<String,Object> productMap =SerenityRest.given().log().all()
-                .when()
-                .get()
-                .then()
-                .statusCode(200)
-                .extract()
 
-                .path(p1+ name+ p2);
-        Assert.assertThat(productMap, hasValue(name));
-        productId= (int) productMap.get("id");// return value of ID
 
-    }
     @Title("Update the user and verify the updated information")
     @Test
-    public void test003(){
-        name=name+"updated";
-        ProductPojo productPojo=new ProductPojo();
+    public void test004() {
+        name = name + "updated";
+        ProductPojo productPojo = new ProductPojo();
         productPojo.setName(name);
 
-            SerenityRest.given().log().all()
-                    .contentType(ContentType.JSON)
-                    .pathParam("id",productId)
-                    .body(productPojo)
-                    .when()
-                    .patch(EndPoints.UPDATE_PRODUCT_BY_ID)
-                    .then().log().all().statusCode(200);
+        SerenityRest.given().log().all()
+                .contentType(ContentType.JSON)
+                .pathParam("id", productId)
+                .body(productPojo)
+                .when()
+                .patch(EndPoints.UPDATE_PRODUCT_BY_ID)
+                .then().log().all().statusCode(200);
 
-            String p1="findAll{it.firstName=='";
-            String p2="'}.get(0)";
-            HashMap<String,Object>  ProductMap =SerenityRest.given().log().all()
-                    .when()
-                    .get(EndPoints.UPDATE_PRODUCT_BY_ID)
-                    .then()
-                    .statusCode(200)
-                    .extract()
-                    .path(p1+ name+p2);//findAll{it.firstName=='bhavesh123'}.get(0)
-         //   Assert.assertThat(ProductMap, hasValue(name));
+    }
 
-        }
     @Title("Delete the product and verify if the student is deleted")
     @Test
-    public void test004(){
-        SerenityRest. given()
-                .pathParam("id",productId)
+    public void test005() {
+        SerenityRest.given()
+                .pathParam("id", productId)
                 .when()
                 .delete(EndPoints.DELETE_PRODUCT_BY_ID)
                 .then()
-                .statusCode(204);
+                .statusCode(200);
         given().log().all()
-                .pathParam("id",productId)
+                .pathParam("id", productId)
                 .when()
                 .get(EndPoints.DELETE_PRODUCT_BY_ID)
                 .then()

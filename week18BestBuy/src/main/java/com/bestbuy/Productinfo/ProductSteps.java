@@ -28,7 +28,6 @@ public class ProductSteps {
 
 
         return SerenityRest.given().log().all()
-
                 .contentType(ContentType.JSON)
                 .body(productPojo)
                 .when()
