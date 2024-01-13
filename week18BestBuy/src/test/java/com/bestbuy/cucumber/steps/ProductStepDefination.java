@@ -8,19 +8,21 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.ValidatableResponse;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
 
 import java.util.HashMap;
 
 import static org.hamcrest.collection.IsMapContaining.hasValue;
-
+@RunWith(SerenityRunner.class)
 public class ProductStepDefination {
     static int id;
     static  String name=null;
     static ValidatableResponse response;
     @Steps
-    ProductSteps productSteps;
+    com.bestbuy.Productinfo.ProductSteps productSteps;
     @Given("^Best buy application is running$")
     public void bestBuyApplicationIsRunning() {
     }

@@ -31,7 +31,7 @@ public class ProductSteps {
                 .contentType(ContentType.JSON)
                 .body(productPojo)
                 .when()
-                .post()
+                .post(EndPoints.CREATE_PRODUCT)
                 .then().log().all();
     }
     @Step("Getting the product information with id: {0}")
@@ -49,7 +49,7 @@ public class ProductSteps {
         return SerenityRest.given().log().all()
 
                 .when()
-                .get()
+                .get(EndPoints.GET_PRODUCT)
                 .then().log().all();
     }
 

@@ -24,7 +24,8 @@ public class ProductPojo {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
 
@@ -72,7 +73,8 @@ public class ProductPojo {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(String model)
+    {
         this.model = model;
     }
 

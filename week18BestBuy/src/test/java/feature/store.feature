@@ -1,5 +1,5 @@
 Feature: Best Buy Application
-@test
+@test1
 Scenario Outline: Store CRUD Test
 Given Best buy application is running
 When I create a new store by providing the information name "<name>" type "<type>" address "<address>" addresstwo "<address2>" city "<city>" state "<state>" zip "<zip>" lat "<lat>" lng "<lng>" hours "<hours>"

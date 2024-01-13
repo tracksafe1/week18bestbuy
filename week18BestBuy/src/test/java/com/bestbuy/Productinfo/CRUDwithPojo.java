@@ -8,11 +8,13 @@ import io.restassured.http.ContentType;
 
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.rest.SerenityRest;
-import net.thucydides.core.annotations.Steps;
+
 import net.thucydides.core.annotations.Title;
-import org.junit.Assert;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.HashMap;
 
@@ -20,7 +22,7 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 
 import static org.hamcrest.Matchers.hasValue;
-
+@RunWith(SerenityRunner.class)
 public class CRUDwithPojo extends TestBaseBestBuyApi {
 
     static String name = "Battery" + TestUtils.getRandomValue();
@@ -38,8 +40,8 @@ public class CRUDwithPojo extends TestBaseBestBuyApi {
     static int productId;
     static ValidatableResponse response;
 
-    @Steps
-    ProductSteps productSteps;
+
+
 
 
     @Test

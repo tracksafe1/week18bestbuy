@@ -1,7 +1,7 @@
 Feature: Best Buy Application
 
   As a user I want to test Best Buy Application
-
+  @test
   Scenario Outline: Product CRUD Test
     Given Best buy application is running
     When I create a new product by providing the information name "<name>" type "<type>" price "<price>" shipping "<shipping>" upc "<upc>" description "<description>" manufacturer "<manufacturer>" model "<model>" url "<url>" image "<image>"
